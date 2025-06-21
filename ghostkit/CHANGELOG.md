@@ -2,10 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+= 3.4.2 - Jun 21, 2025 =
+
+* fixed XSS with theme template files
+* fixed block unique ID when duplicating multiple blocks
+* fixed always generating heading block anchors even if it not required
+* fixed displaying TOC heading content in editor
+* fixed Icon block rendering `aria-label` attribute on link
+* **Pro:**
+* fixed updater caching issue that sometimes caused Forbidden errors
+
 = 3.4.1 - Jan 13, 2025 =
 
 * fixed blocks error in Widgets screen because 'core/editor' store is not available
 * updated Google Fonts list
+* **Pro:**
+* changed loading of module script in Code block to `wp_enqueue_script_module`
 
 = 3.4.0 - Dec 18, 2024 =
 
