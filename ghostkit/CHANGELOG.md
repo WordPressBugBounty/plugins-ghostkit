@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+= 3.4.6 - Dec 7, 2025 =
+
+* fixed incorrect double escaping of Effects extension attribute because of WP 6.9 changes
+* **Pro:**
+* fixed incorrect double escaping of Attributes extension attribute because of WP 6.9 changes
+
+= 3.4.5 - Dec 3, 2025 =
+
+* **Pro:**
+* fixed error appear in WordPress 6.9 because of changed behavior of `wp_enqueue_script_module` function
+
 = 3.4.4 - Sep 11, 2025 =
 
 * added permission checks to custom JS and CSS in posts meta editor (fixes possible XSS from contributors)
