@@ -2,7 +2,7 @@
 /**
  * Plugin Name:  Ghost Kit
  * Description:  Page Builder Blocks and Extensions for Gutenberg
- * Version:      3.5.0
+ * Version:      3.5.1
  * Plugin URI:   https://www.ghostkit.io/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=byline
  * Author:       Ghost Kit Team
  * Author URI:   https://www.ghostkit.io/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=byline
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'GHOSTKIT_VERSION' ) ) {
-	define( 'GHOSTKIT_VERSION', '3.5.0' );
+	define( 'GHOSTKIT_VERSION', '3.5.1' );
 }
 
 if ( ! class_exists( 'GhostKit' ) ) :
@@ -249,6 +249,24 @@ if ( ! class_exists( 'GhostKit' ) ) :
 				$css_deps[] = 'gist-simple';
 				$js_deps[]  = 'gist-simple';
 			}
+
+			// In block metadata, many Ghost Kit blocks declare `style: ["ghostkit", ...]`.
+			// Because of this, WordPress auto-enqueues the `ghostkit` style handle for those blocks
+			// in every context where blocks are rendered, including the editor.
+			//
+			// `ghostkit` is our frontend stylesheet (`build/gutenberg/style.css`), while editor UI
+			// is styled by `ghostkit-editor` (`build/gutenberg/editor.css`). Loading both in editor
+			// causes conflicts (for example, frontend Display extension rules can hide editor blocks).
+			//
+			// To keep block dependency chains intact without editing all block.json files, we override
+			// only the `ghostkit` handle in admin and make it an alias that depends on `ghostkit-editor`.
+			// Result:
+			// - frontend keeps using real `ghostkit` styles;
+			// - editor resolves `ghostkit` dependencies to editor styles, avoiding CSS conflicts.
+			if ( wp_style_is( 'ghostkit', 'registered' ) ) {
+				wp_deregister_style( 'ghostkit' );
+			}
+			wp_register_style( 'ghostkit', false, array( 'ghostkit-editor' ), GHOSTKIT_VERSION );
 
 			// Ghost Kit.
 			GhostKit_Assets::enqueue_style(
