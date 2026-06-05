@@ -2,7 +2,7 @@
 /**
  * Plugin Name:  Ghost Kit
  * Description:  Page Builder Blocks and Extensions for Gutenberg
- * Version:      3.5.1
+ * Version:      3.6.0
  * Plugin URI:   https://www.ghostkit.io/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=byline
  * Author:       Ghost Kit Team
  * Author URI:   https://www.ghostkit.io/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=byline
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'GHOSTKIT_VERSION' ) ) {
-	define( 'GHOSTKIT_VERSION', '3.5.1' );
+	define( 'GHOSTKIT_VERSION', '3.6.0' );
 }
 
 if ( ! class_exists( 'GhostKit' ) ) :
@@ -108,6 +108,7 @@ if ( ! class_exists( 'GhostKit' ) ) :
 
 			require_once $this->plugin_path . 'classes/class-rest.php';
 			require_once $this->plugin_path . 'classes/class-parse-blocks.php';
+			require_once $this->plugin_path . 'classes/class-assets-detector.php';
 			require_once $this->plugin_path . 'classes/class-assets.php';
 			require_once $this->plugin_path . 'classes/class-reusable-widget.php';
 			require_once $this->plugin_path . 'classes/class-icons.php';
