@@ -73,7 +73,7 @@ class Customizer extends Component {
 		if (!this.state.jsonOptions) {
 			try {
 				options = JSON.parse(decodeURI(options));
-			} catch (e) {
+			} catch (_e) {
 				options = [];
 			}
 		} else {
@@ -306,7 +306,6 @@ class Customizer extends Component {
 											label={opt.label || opt.id}
 											id={opt.id}
 											className="ghostkit-customizer-list-field"
-											__nextHasNoMarginBottom
 										>
 											<ColorPalette
 												value={opt.value}
@@ -345,8 +344,6 @@ class Customizer extends Component {
 												this.updateOptions(value, opt);
 											}}
 											className="ghostkit-customizer-list-field"
-											__next40pxDefaultSize
-											__nextHasNoMarginBottom
 											{...sliderAttrs}
 										/>
 									);
@@ -364,7 +361,6 @@ class Customizer extends Component {
 												);
 											}}
 											className="ghostkit-customizer-list-field"
-											__nextHasNoMarginBottom
 										/>
 									);
 									break;
@@ -377,13 +373,12 @@ class Customizer extends Component {
 												this.updateOptions(value, opt);
 											}}
 											className="ghostkit-customizer-list-field"
-											__nextHasNoMarginBottom
 										/>
 									);
 									break;
+								// biome-ignore lint/suspicious/noFallthroughSwitchClause: image controls intentionally reuse the default select control.
 								case 'kirki-image':
 									opt.choices = [];
-								// fallthrough
 								default:
 									if (opt.choices && opt.choices.length) {
 										control = (
@@ -398,8 +393,6 @@ class Customizer extends Component {
 													);
 												}}
 												className="ghostkit-customizer-list-field"
-												__next40pxDefaultSize
-												__nextHasNoMarginBottom
 											/>
 										);
 									} else {
@@ -414,8 +407,6 @@ class Customizer extends Component {
 													);
 												}}
 												className="ghostkit-customizer-list-field"
-												__next40pxDefaultSize
-												__nextHasNoMarginBottom
 											/>
 										);
 									}

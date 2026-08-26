@@ -1,5 +1,3 @@
-import classnames from 'classnames/dedupe';
-
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import {
 	ExternalLink,
@@ -11,6 +9,7 @@ import {
 import { useEffect, useRef, useState } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import {
 	getLoadContext,
@@ -153,8 +152,6 @@ export default function BlockEdit(props) {
 								urlOnChange(sUrl, 0);
 							}
 						}}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 					<GistFilesSelect
 						label={__('File', 'ghostkit')}
@@ -168,14 +165,11 @@ export default function BlockEdit(props) {
 						label={__('Caption', 'ghostkit')}
 						value={caption}
 						onChange={(value) => setAttributes({ caption: value })}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 					<ToggleControl
 						label={__('Show footer', 'ghostkit')}
 						checked={!!showFooter}
 						onChange={(val) => setAttributes({ showFooter: val })}
-						__nextHasNoMarginBottom
 					/>
 					<ToggleControl
 						label={__('Show line numbers', 'ghostkit')}
@@ -183,7 +177,6 @@ export default function BlockEdit(props) {
 						onChange={(val) =>
 							setAttributes({ showLineNumbers: val })
 						}
-						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
 			</InspectorControls>
@@ -204,8 +197,6 @@ export default function BlockEdit(props) {
 									urlOnChange(sUrl, 0);
 								}
 							}}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<ExternalLink href="https://gist.github.com/">
 							{__('Visit GitHub Gist Site', 'ghostkit')}

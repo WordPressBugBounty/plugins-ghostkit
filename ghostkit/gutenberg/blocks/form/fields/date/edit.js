@@ -1,9 +1,8 @@
-import classnames from 'classnames/dedupe';
-
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { PanelBody, TextControl } from '@wordpress/components';
 import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import {
 	FieldDefaultSettings,
@@ -39,8 +38,6 @@ export default function BlockEdit(props) {
 			onChange={(val) => setAttributes({ default: val })}
 			max={max}
 			min={min}
-			__next40pxDefaultSize
-			__nextHasNoMarginBottom
 		/>
 	);
 
@@ -62,8 +59,6 @@ export default function BlockEdit(props) {
 						value={min}
 						onChange={(val) => setAttributes({ min: val })}
 						max={max}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 					<TextControl
 						type="date"
@@ -71,19 +66,12 @@ export default function BlockEdit(props) {
 						value={max}
 						onChange={(val) => setAttributes({ max: val })}
 						min={min}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
 			</InspectorControls>
 			<div {...blockProps}>
 				<FieldLabel {...props} />
-				<TextControl
-					type="date"
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-					{...getFieldAttributes(attributes)}
-				/>
+				<TextControl type="date" {...getFieldAttributes(attributes)} />
 				<FieldDescription {...props} />
 			</div>
 		</>

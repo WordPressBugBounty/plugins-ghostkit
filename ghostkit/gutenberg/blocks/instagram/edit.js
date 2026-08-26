@@ -1,5 +1,3 @@
-import classnames from 'classnames/dedupe';
-
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import {
 	ExternalLink,
@@ -12,6 +10,7 @@ import {
 import { useSelect } from '@wordpress/data';
 import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import GapSettings from '../../components/gap-settings';
 import RangeControl from '../../components/range-control';
@@ -94,8 +93,6 @@ export default function BlockEdit(props) {
 								min={1}
 								max={20}
 								allowCustomMax
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
 							/>
 							<RangeControl
 								label={__('Columns', 'ghostkit')}
@@ -106,8 +103,6 @@ export default function BlockEdit(props) {
 								min={1}
 								max={8}
 								allowCustomMax
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
 							/>
 						</PanelBody>
 						<PanelBody>
@@ -126,7 +121,6 @@ export default function BlockEdit(props) {
 								onChange={(val) =>
 									setAttributes({ showProfile: val })
 								}
-								__nextHasNoMarginBottom
 							/>
 							{attributes.showProfile ? (
 								<>
@@ -138,7 +132,6 @@ export default function BlockEdit(props) {
 												showProfileAvatar: val,
 											})
 										}
-										__nextHasNoMarginBottom
 									/>
 									{showProfileAvatar ? (
 										<RangeControl
@@ -156,8 +149,6 @@ export default function BlockEdit(props) {
 											max={150}
 											allowCustomMin
 											allowCustomMax
-											__next40pxDefaultSize
-											__nextHasNoMarginBottom
 										/>
 									) : null}
 									<ToggleControl
@@ -168,7 +159,6 @@ export default function BlockEdit(props) {
 												showProfileName: val,
 											})
 										}
-										__nextHasNoMarginBottom
 									/>
 									<ToggleControl
 										label={__('Show Stats', 'ghostkit')}
@@ -178,7 +168,6 @@ export default function BlockEdit(props) {
 												showProfileStats: val,
 											})
 										}
-										__nextHasNoMarginBottom
 									/>
 									<ToggleControl
 										label={__('Show BIO', 'ghostkit')}
@@ -188,7 +177,6 @@ export default function BlockEdit(props) {
 												showProfileBio: val,
 											})
 										}
-										__nextHasNoMarginBottom
 									/>
 									<ToggleControl
 										label={__('Show Website', 'ghostkit')}
@@ -198,7 +186,6 @@ export default function BlockEdit(props) {
 												showProfileWebsite: val,
 											})
 										}
-										__nextHasNoMarginBottom
 									/>
 								</>
 							) : null}
@@ -216,8 +203,6 @@ export default function BlockEdit(props) {
 						onChange={(value) =>
 							setAttributes({ accessToken: value })
 						}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 					<p>
 						<em>

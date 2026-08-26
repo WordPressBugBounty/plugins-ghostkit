@@ -1,5 +1,3 @@
-import classnames from 'classnames/dedupe';
-
 import {
 	BlockControls,
 	InspectorControls,
@@ -14,6 +12,7 @@ import {
 } from '@wordpress/components';
 import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import ApplyFilters from '../../components/apply-filters';
 import ColorIndicator from '../../components/color-indicator';
@@ -119,8 +118,6 @@ export default function BlockEdit(props) {
 							},
 						]}
 						onChange={(value) => setAttributes({ type: value })}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 					<RangeControl
 						label={__('Size', 'ghostkit')}
@@ -131,8 +128,6 @@ export default function BlockEdit(props) {
 						beforeIcon="editor-textcolor"
 						afterIcon="editor-textcolor"
 						allowCustomMax
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
 				<PanelBody>
@@ -154,8 +149,6 @@ export default function BlockEdit(props) {
 							afterIcon="editor-textcolor"
 							allowCustomMin
 							allowCustomMax
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 					) : null}
 				</PanelBody>

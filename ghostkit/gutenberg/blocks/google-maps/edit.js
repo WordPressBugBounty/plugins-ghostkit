@@ -1,6 +1,3 @@
-import classnames from 'classnames/dedupe';
-import { debounce } from 'throttle-debounce';
-
 import apiFetch from '@wordpress/api-fetch';
 import {
 	BlockControls,
@@ -25,6 +22,8 @@ import {
 import { useEffect, useState } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
+import { debounce } from 'throttle-debounce';
 
 import DropdownPicker from '../../components/dropdown-picker';
 import ImagePicker from '../../components/image-picker';
@@ -49,7 +48,7 @@ function getStyles(string) {
 
 	try {
 		result = JSON.parse(maybeDecode(string));
-	} catch (e) {
+	} catch (_e) {
 		return [];
 	}
 
@@ -88,8 +87,6 @@ function MarkerSettings(props) {
 				onChange={(value) => {
 					onChange({ title: value });
 				}}
-				__next40pxDefaultSize
-				__nextHasNoMarginBottom
 			/>
 			<SearchBox
 				googleMapURL={googleMapURL}
@@ -162,8 +159,6 @@ function MarkerSettings(props) {
 						}
 						min={MIN_MARKER_WIDTH}
 						max={MAX_MARKER_WIDTH}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 				</div>
 			) : null}
@@ -171,7 +166,6 @@ function MarkerSettings(props) {
 				label={__('Info Window Text', 'ghostkit')}
 				className="ghostkit-google-maps-marker-options-content-info-window-text"
 				id="ghostkit-google-maps-marker-content-info-window-text"
-				__nextHasNoMarginBottom
 			>
 				<RichText
 					value={infoWindowText}
@@ -339,7 +333,6 @@ export default function BlockEdit(props) {
 									styleCustom: maybeEncode(value),
 								})
 							}
-							__nextHasNoMarginBottom
 						/>
 						<p>
 							<em>
@@ -482,8 +475,6 @@ export default function BlockEdit(props) {
 								max={800}
 								allowCustomMin
 								allowCustomMax
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
 							/>
 							<RangeControl
 								label={__('Zoom', 'ghostkit')}
@@ -494,8 +485,6 @@ export default function BlockEdit(props) {
 								min={1}
 								max={18}
 								allowCustomMax
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
 							/>
 						</PanelBody>
 						<PanelBody title={__('Markers', 'ghostkit')}>
@@ -595,7 +584,6 @@ export default function BlockEdit(props) {
 								onChange={(val) =>
 									setAttributes({ showZoomButtons: val })
 								}
-								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
 								label={__('Map Type Buttons', 'ghostkit')}
@@ -603,7 +591,6 @@ export default function BlockEdit(props) {
 								onChange={(val) =>
 									setAttributes({ showMapTypeButtons: val })
 								}
-								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
 								label={__('Street View Button', 'ghostkit')}
@@ -611,7 +598,6 @@ export default function BlockEdit(props) {
 								onChange={(val) =>
 									setAttributes({ showStreetViewButton: val })
 								}
-								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
 								label={__('Fullscreen Button', 'ghostkit')}
@@ -619,7 +605,6 @@ export default function BlockEdit(props) {
 								onChange={(val) =>
 									setAttributes({ showFullscreenButton: val })
 								}
-								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
 								label={__('Scroll Wheel', 'ghostkit')}
@@ -627,7 +612,6 @@ export default function BlockEdit(props) {
 								onChange={(val) =>
 									setAttributes({ optionScrollWheel: val })
 								}
-								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
 								label={__('Draggable', 'ghostkit')}
@@ -635,7 +619,6 @@ export default function BlockEdit(props) {
 								onChange={(val) =>
 									setAttributes({ optionDraggable: val })
 								}
-								__nextHasNoMarginBottom
 							/>
 							{optionScrollWheel || optionDraggable ? (
 								<ToggleControl
@@ -696,7 +679,6 @@ export default function BlockEdit(props) {
 													: 'greedy',
 										});
 									}}
-									__nextHasNoMarginBottom
 								/>
 							) : null}
 						</PanelBody>
@@ -714,8 +696,6 @@ export default function BlockEdit(props) {
 							onChangeAPIKey(value);
 							saveAPIKey(value);
 						}}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 					<p>
 						<em>

@@ -1,0 +1,12 @@
+{
+	"extends": ["@nk-crew/plugin-toolkit/biome"],
+	"linter": {
+		"rules": {
+			"a11y": {
+				"noSvgWithoutTitle": "off",
+				"useButtonType": "off",
+				"useValidAnchor": "off"
+			}
+		}
+	}
+}

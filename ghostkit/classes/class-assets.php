@@ -386,8 +386,8 @@ class GhostKit_Assets {
 
 		// Jarallax.
 		if ( apply_filters( 'gkt_enqueue_plugin_jarallax', true ) ) {
-			self::register_script( 'jarallax', 'assets/vendor/jarallax/dist/jarallax.min', array(), '2.0.1' );
-			self::register_script( 'jarallax-video', 'assets/vendor/jarallax/dist/jarallax-video.min', array( 'jarallax' ), '2.0.1' );
+			self::register_script( 'jarallax', 'assets/vendor/jarallax/dist/jarallax.min', array(), '3.1.0' );
+			self::register_script( 'jarallax-video', 'assets/vendor/jarallax/dist/jarallax-video.min', array( 'jarallax' ), '3.1.0' );
 		}
 
 		// Swiper.
@@ -631,7 +631,7 @@ class GhostKit_Assets {
 			);
 		}
 		foreach ( glob( ghostkit()->plugin_path . 'build/gutenberg/blocks/*/styles/style.css' ) as $file ) {
-			$block_name      = basename( dirname( dirname( $file ) ) );
+			$block_name      = basename( dirname( $file, 2 ) );
 			$block_style_url = 'build/gutenberg/blocks/' . $block_name . '/styles/style';
 			$block_css_deps  = array( 'ghostkit' );
 

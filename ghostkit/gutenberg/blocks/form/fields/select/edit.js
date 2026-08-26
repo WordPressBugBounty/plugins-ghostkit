@@ -1,9 +1,8 @@
-import classnames from 'classnames/dedupe';
-
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
 import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import {
 	FieldDefaultSettings,
@@ -91,7 +90,6 @@ export default function BlockEdit(props) {
 								setAttributes({ multiple: !multiple });
 							}
 						}}
-						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
 			</InspectorControls>
@@ -135,8 +133,6 @@ export default function BlockEdit(props) {
 
 							return options;
 						})()}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 				)}
 

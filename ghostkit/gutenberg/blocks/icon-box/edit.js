@@ -1,5 +1,3 @@
-import classnames from 'classnames/dedupe';
-
 import {
 	BlockControls,
 	InnerBlocks,
@@ -19,6 +17,7 @@ import {
 import { useSelect } from '@wordpress/data';
 import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import ApplyFilters from '../../components/apply-filters';
 import ColorIndicator from '../../components/color-indicator';
@@ -110,13 +109,10 @@ export default function BlockEdit(props) {
 								afterIcon="editor-textcolor"
 								allowCustomMin
 								allowCustomMax
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
 							/>
 							<BaseControl
 								id={iconPassionLabel}
 								label={iconPassionLabel}
-								__nextHasNoMarginBottom
 							>
 								<div>
 									<Toolbar label={iconPassionLabel}>
@@ -196,7 +192,6 @@ export default function BlockEdit(props) {
 							onChange={(val) =>
 								setAttributes({ showContent: val })
 							}
-							__nextHasNoMarginBottom
 						/>
 					</PanelBody>
 				) : null}

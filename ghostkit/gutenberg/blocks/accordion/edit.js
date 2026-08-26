@@ -1,5 +1,3 @@
-import classnames from 'classnames/dedupe';
-
 import {
 	InspectorControls,
 	useBlockProps,
@@ -16,6 +14,7 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import { useEffect } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 const accordionItemBlockName = 'ghostkit/accordion-item';
 
@@ -84,7 +83,6 @@ export default function BlockEdit(props) {
 						label={__('Collapse one item only', 'ghostkit')}
 						checked={!!collapseOne}
 						onChange={(val) => setAttributes({ collapseOne: val })}
-						__nextHasNoMarginBottom
 					/>
 					<SelectControl
 						label={__('Collapse Title HTML Element', 'ghostkit')}
@@ -122,8 +120,6 @@ export default function BlockEdit(props) {
 						onChange={(value) =>
 							setAttributes({ collapseTitleTag: value })
 						}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
 			</InspectorControls>

@@ -1,5 +1,3 @@
-import classnames from 'classnames/dedupe';
-
 import {
 	BlockControls,
 	InspectorControls,
@@ -9,24 +7,25 @@ import {
 	useBlockProps,
 } from '@wordpress/block-editor';
 import {
-	__experimentalToggleGroupControl as ExperimentalToggleGroupControl,
-	__experimentalToggleGroupControlOption as ExperimentalToggleGroupControlOption,
 	BaseControl,
 	Button,
+	__experimentalToggleGroupControl as ExperimentalToggleGroupControl,
+	__experimentalToggleGroupControlOption as ExperimentalToggleGroupControlOption,
 	ExternalLink,
 	PanelBody,
 	Placeholder,
 	SelectControl,
-	TextareaControl,
-	ToggleControl,
 	ToggleGroupControl as StableToggleGroupControl,
 	ToggleGroupControlOption as StableToggleGroupControlOption,
+	TextareaControl,
+	ToggleControl,
 	Toolbar,
 	ToolbarButton,
 	ToolbarGroup,
 } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import ColorPicker from '../../components/color-picker';
 import RangeControl from '../../components/range-control';
@@ -232,8 +231,6 @@ export default function BlockEdit(props) {
 							min={0}
 							max={100}
 							onChange={(val) => setAttributes({ position: val })}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<ToggleGroupControl
 							label={__('Direction', 'ghostkit')}
@@ -242,8 +239,6 @@ export default function BlockEdit(props) {
 							}
 							value={direction || ''}
 							isBlock
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						>
 							<ToggleGroupControlOption
 								value=""
@@ -259,8 +254,6 @@ export default function BlockEdit(props) {
 							onChange={(val) => setAttributes({ trigger: val })}
 							value={trigger || ''}
 							isBlock
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						>
 							<ToggleGroupControlOption
 								value=""
@@ -281,13 +274,11 @@ export default function BlockEdit(props) {
 						onChange={(value) =>
 							setAttributes({ showLabels: value })
 						}
-						__nextHasNoMarginBottom
 					/>
 					{showLabels && (
 						<BaseControl
 							id={baseControlLabel}
 							label={baseControlLabel}
-							__nextHasNoMarginBottom
 						>
 							<div>
 								<Toolbar
@@ -361,7 +352,6 @@ export default function BlockEdit(props) {
 											'Click the image to edit or update',
 											'ghostkit'
 										)}
-										__nextHasNoMarginBottom
 									>
 										{/* eslint-disable-next-line jsx-a11y/control-has-associated-label, jsx-a11y/anchor-is-valid */}
 										<a
@@ -419,8 +409,6 @@ export default function BlockEdit(props) {
 											label: imgSize.name,
 										})
 									)}
-									__next40pxDefaultSize
-									__nextHasNoMarginBottom
 								/>
 							) : null}
 							<TextareaControl
@@ -443,7 +431,6 @@ export default function BlockEdit(props) {
 										)}
 									</>
 								}
-								__nextHasNoMarginBottom
 							/>
 						</>
 					) : null}
@@ -478,7 +465,6 @@ export default function BlockEdit(props) {
 											'Click the image to edit or update',
 											'ghostkit'
 										)}
-										__nextHasNoMarginBottom
 									>
 										{/* eslint-disable-next-line jsx-a11y/control-has-associated-label, jsx-a11y/anchor-is-valid */}
 										<a
@@ -536,8 +522,6 @@ export default function BlockEdit(props) {
 											label: imgSize.name,
 										})
 									)}
-									__next40pxDefaultSize
-									__nextHasNoMarginBottom
 								/>
 							) : null}
 							<TextareaControl
@@ -560,7 +544,6 @@ export default function BlockEdit(props) {
 										)}
 									</>
 								}
-								__nextHasNoMarginBottom
 							/>
 						</>
 					) : null}

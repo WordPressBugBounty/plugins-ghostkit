@@ -1,7 +1,6 @@
-import classnames from 'classnames/dedupe';
-
 import { BaseControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
+import classnames from 'classnames/dedupe';
 
 import useResponsive from '../../hooks/use-responsive';
 import ElementStateToggle from '../element-state-toggle';
@@ -17,7 +16,6 @@ function InputGroupWithChildren(props) {
 	return (
 		<BaseControl
 			className={classnames('ghostkit-component-input-group', className)}
-			__nextHasNoMarginBottom
 			{...restProps}
 		>
 			<div className="ghostkit-component-input-group-wrapper">
@@ -89,7 +87,6 @@ export default function InputGroup(props) {
 					)}
 				</>
 			}
-			__nextHasNoMarginBottom
 			{...restProps}
 		>
 			<div className="ghostkit-component-input-group-wrapper">

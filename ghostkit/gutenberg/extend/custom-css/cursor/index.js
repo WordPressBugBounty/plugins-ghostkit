@@ -1,7 +1,7 @@
 import {
 	__experimentalToolsPanelItem as ExperimentalToolsPanelItem,
-	__stableToolsPanelItem as StableToolsPanelItem,
 	SelectControl,
+	__stableToolsPanelItem as StableToolsPanelItem,
 } from '@wordpress/components';
 import { addFilter } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
@@ -192,8 +192,6 @@ function CustomCSSCursorTools(props) {
 						label: __('None', 'ghostkit'),
 					},
 				]}
-				__next40pxDefaultSize
-				__nextHasNoMarginBottom
 			/>
 		</ToolsPanelItem>
 	);

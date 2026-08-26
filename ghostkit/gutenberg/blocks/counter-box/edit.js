@@ -1,5 +1,3 @@
-import classnames from 'classnames/dedupe';
-
 import {
 	BlockControls,
 	InnerBlocks,
@@ -21,6 +19,7 @@ import {
 import { useSelect } from '@wordpress/data';
 import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import ApplyFilters from '../../components/apply-filters';
 import ColorIndicator from '../../components/color-indicator';
@@ -103,13 +102,10 @@ export default function BlockEdit(props) {
 						beforeIcon="editor-textcolor"
 						afterIcon="editor-textcolor"
 						allowCustomMax
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 					<BaseControl
 						id={numberPositionLabel}
 						label={numberPositionLabel}
-						__nextHasNoMarginBottom
 					>
 						<div>
 							<Toolbar label={numberPositionLabel}>
@@ -176,7 +172,6 @@ export default function BlockEdit(props) {
 						label={__('Show Content', 'ghostkit')}
 						checked={!!showContent}
 						onChange={(val) => setAttributes({ showContent: val })}
-						__nextHasNoMarginBottom
 					/>
 					<ToggleControl
 						label={__('Animate in viewport', 'ghostkit')}
@@ -184,7 +179,6 @@ export default function BlockEdit(props) {
 						onChange={(val) =>
 							setAttributes({ animateInViewport: val })
 						}
-						__nextHasNoMarginBottom
 					/>
 					{animateInViewport ? (
 						<TextControl
@@ -196,8 +190,6 @@ export default function BlockEdit(props) {
 									animateInViewportFrom: parseInt(value, 10),
 								})
 							}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 					) : null}
 				</PanelBody>

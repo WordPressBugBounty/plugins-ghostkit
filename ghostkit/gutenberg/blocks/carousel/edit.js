@@ -1,5 +1,3 @@
-import classnames from 'classnames/dedupe';
-
 import {
 	InspectorControls,
 	useBlockProps,
@@ -8,13 +6,14 @@ import {
 import { createBlock } from '@wordpress/blocks';
 import {
 	__experimentalNumberControl as ExperimentalNumberControl,
-	NumberControl as StableNumberControl,
 	PanelBody,
+	NumberControl as StableNumberControl,
 	ToggleControl,
 } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import EditorStyles from '../../components/editor-styles';
 import IconPicker from '../../components/icon-picker';
@@ -127,8 +126,6 @@ export default function BlockEdit(props) {
 						min={2}
 						max={20}
 						allowCustomMax
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 					{effect !== 'fade' ? (
 						<>
@@ -141,8 +138,6 @@ export default function BlockEdit(props) {
 								min={1}
 								max={8}
 								allowCustomMax
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
 							/>
 							<RangeControl
 								label={__('Gap', 'ghostkit')}
@@ -153,8 +148,6 @@ export default function BlockEdit(props) {
 								min={0}
 								max={60}
 								allowCustomMax
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
 							/>
 						</>
 					) : null}
@@ -197,8 +190,6 @@ export default function BlockEdit(props) {
 						max={10}
 						step={0.1}
 						allowCustomMax
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 					<RangeControl
 						label={__('Autoplay (seconds)', 'ghostkit')}
@@ -208,8 +199,6 @@ export default function BlockEdit(props) {
 						max={20}
 						step={0.3}
 						allowCustomMax
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 					{autoplay ? (
 						<ToggleControl
@@ -221,7 +210,6 @@ export default function BlockEdit(props) {
 							onChange={(val) =>
 								setAttributes({ autoplayHoverPause: val })
 							}
-							__nextHasNoMarginBottom
 						/>
 					) : null}
 
@@ -238,29 +226,24 @@ export default function BlockEdit(props) {
 						onChange={(val) =>
 							setAttributes({ centeredSlides: val })
 						}
-						__nextHasNoMarginBottom
 					/>
 					<ToggleControl
 						label={__('Loop', 'ghostkit')}
 						checked={!!loop}
 						onChange={(val) => setAttributes({ loop: val })}
-						__nextHasNoMarginBottom
 					/>
 					<ToggleControl
 						label={__('Free Scroll', 'ghostkit')}
 						checked={!!freeScroll}
 						onChange={(val) => setAttributes({ freeScroll: val })}
-						__nextHasNoMarginBottom
 					/>
 					<ToggleControl
 						label={__('Fade Edges', 'ghostkit')}
 						checked={!!fadeEdges}
 						onChange={(val) => setAttributes({ fadeEdges: val })}
-						__nextHasNoMarginBottom
 					/>
 					{fadeEdges && (
 						<NumberControl
-							__next40pxDefaultSize
 							label={__('Fade Edges Size', 'ghostkit')}
 							suffix="%&nbsp;"
 							value={fadeEdgesSize}
@@ -282,7 +265,6 @@ export default function BlockEdit(props) {
 						label={__('Show', 'ghostkit')}
 						checked={!!showArrows}
 						onChange={(val) => setAttributes({ showArrows: val })}
-						__nextHasNoMarginBottom
 					/>
 					{showArrows ? (
 						<>
@@ -310,7 +292,6 @@ export default function BlockEdit(props) {
 						label={__('Show', 'ghostkit')}
 						checked={!!showBullets}
 						onChange={(val) => setAttributes({ showBullets: val })}
-						__nextHasNoMarginBottom
 					/>
 					{showBullets ? (
 						<ToggleControl
@@ -319,7 +300,6 @@ export default function BlockEdit(props) {
 							onChange={(val) =>
 								setAttributes({ dynamicBullets: val })
 							}
-							__nextHasNoMarginBottom
 						/>
 					) : null}
 				</PanelBody>
@@ -335,7 +315,7 @@ export default function BlockEdit(props) {
               --gkt-carousel-gap: ${gap}px;
               --gkt-carousel-slides-per-view: ${
 					effect === 'fade' ? 1 : slidesPerView
-				};
+};
             }
           `}
 			/>

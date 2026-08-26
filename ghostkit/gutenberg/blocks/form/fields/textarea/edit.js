@@ -1,9 +1,8 @@
-import classnames from 'classnames/dedupe';
-
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { PanelBody, TextareaControl } from '@wordpress/components';
 import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import {
 	FieldDefaultSettings,
@@ -35,7 +34,6 @@ export default function BlockEdit(props) {
 			label={__('Default', 'ghostkit')}
 			value={defaultVal}
 			onChange={(val) => setAttributes({ default: val })}
-			__nextHasNoMarginBottom
 		/>
 	);
 
@@ -53,10 +51,7 @@ export default function BlockEdit(props) {
 			</InspectorControls>
 			<div {...blockProps}>
 				<FieldLabel {...props} />
-				<TextareaControl
-					__nextHasNoMarginBottom
-					{...getFieldAttributes(attributes)}
-				/>
+				<TextareaControl {...getFieldAttributes(attributes)} />
 				<FieldDescription {...props} />
 			</div>
 		</>

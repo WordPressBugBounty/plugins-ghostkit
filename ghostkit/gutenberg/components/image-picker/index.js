@@ -1,6 +1,5 @@
-import classnames from 'classnames/dedupe';
-
 import { BaseControl } from '@wordpress/components';
+import classnames from 'classnames/dedupe';
 
 /**
  * Component Class
@@ -18,7 +17,6 @@ export default function ImagePicker(props) {
 				'ghostkit-component-image-picker',
 				`ghostkit-component-image-picker-${itemsPerRow}`
 			)}
-			__nextHasNoMarginBottom
 		>
 			{options.map((option) => (
 				<button

@@ -1,7 +1,7 @@
 import {
 	__experimentalToolsPanelItem as ExperimentalToolsPanelItem,
-	__stableToolsPanelItem as StableToolsPanelItem,
 	SelectControl,
+	__stableToolsPanelItem as StableToolsPanelItem,
 	TextareaControl,
 } from '@wordpress/components';
 import { addFilter } from '@wordpress/hooks';
@@ -70,8 +70,6 @@ function CustomCSSClipPathTools(props) {
 					setStyles({ 'clip-path': val }, device);
 				}}
 				options={optionPresets}
-				__next40pxDefaultSize
-				__nextHasNoMarginBottom
 			/>
 			<br />
 			<TextareaControl
@@ -79,7 +77,6 @@ function CustomCSSClipPathTools(props) {
 				onChange={(val) => {
 					setStyles({ 'clip-path': val }, device);
 				}}
-				__nextHasNoMarginBottom
 			/>
 		</ToolsPanelItem>
 	);

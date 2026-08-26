@@ -1,7 +1,6 @@
-import classnames from 'classnames/dedupe';
-
 import { Button, Tooltip } from '@wordpress/components';
 import { __, sprintf } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import useResponsive from '../../hooks/use-responsive';
 import getIcon from '../../utils/get-icon';
@@ -38,6 +37,7 @@ export default function ResponsiveTabPanel(props) {
 						!name
 							? __('All devices', 'ghostkit')
 							: sprintf(
+									// translators: %s: breakpoint width in pixels, for example "768px".
 									__(
 										'Devices with screen width <= %s',
 										'ghostkit'

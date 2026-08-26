@@ -1,8 +1,7 @@
-import $ from 'jquery';
-
 import { DropdownMenu, SelectControl } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import $ from 'jquery';
 
 const cache = {};
 
@@ -90,8 +89,6 @@ export default function GistFilesSelect(props) {
 			}))}
 			onChange={onChange}
 			className={className}
-			__next40pxDefaultSize
-			__nextHasNoMarginBottom
 		/>
 	);
 }

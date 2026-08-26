@@ -1,9 +1,8 @@
-import classnames from 'classnames/dedupe';
-
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { PanelBody, TextControl } from '@wordpress/components';
 import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import { getFieldAttributes } from '../../field-attributes';
 import FieldLabel from '../../field-label';
@@ -36,19 +35,12 @@ export default function BlockEdit(props) {
 						label={__('Value', 'ghostkit')}
 						value={defaultVal}
 						onChange={(val) => setAttributes({ default: val })}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
 			</InspectorControls>
 			<div {...blockProps}>
 				<FieldLabel {...props} />
-				<TextControl
-					type="text"
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-					{...getFieldAttributes(attributes)}
-				/>
+				<TextControl type="text" {...getFieldAttributes(attributes)} />
 			</div>
 		</>
 	);

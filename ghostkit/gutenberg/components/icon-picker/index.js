@@ -128,8 +128,6 @@ function IconPickerDropdown(props) {
 							autoComplete="off"
 							// eslint-disable-next-line jsx-a11y/no-autofocus
 							autoFocus
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<div className="ghostkit-component-icon-picker-input-output">
 							{customizeIcon ? (
@@ -141,7 +139,6 @@ function IconPickerDropdown(props) {
 									}}
 									placeholder={__('Icon Output', 'ghostkit')}
 									autoComplete="off"
-									__nextHasNoMarginBottom
 								/>
 							) : (
 								<Button
@@ -387,12 +384,7 @@ function IconPickerDropdown(props) {
 	);
 
 	return label ? (
-		<BaseControl
-			id={label}
-			label={label}
-			className={className}
-			__nextHasNoMarginBottom
-		>
+		<BaseControl id={label} label={label} className={className}>
 			{dropdown}
 		</BaseControl>
 	) : (
@@ -404,10 +396,7 @@ export default function IconPicker(props) {
 	const { value, label, onChange, insideInspector } = props;
 
 	return (
-		<BaseControl
-			className="ghostkit-component-icon-picker-wrapper"
-			__nextHasNoMarginBottom
-		>
+		<BaseControl className="ghostkit-component-icon-picker-wrapper">
 			<IconPicker.Dropdown
 				onChange={(val) => onChange(maybeEncode(val))}
 				value={maybeDecode(value)}
@@ -441,7 +430,7 @@ export default function IconPicker(props) {
 IconPicker.Dropdown = IconPickerDropdown;
 
 // preview icon.
-IconPicker.Preview = function (props) {
+IconPicker.Preview = (props) => {
 	const { onClick, className, alwaysRender = false } = props;
 
 	let { data, name } = props;
@@ -496,7 +485,7 @@ IconPicker.Preview = function (props) {
 };
 
 // render icon.
-IconPicker.Render = function (props) {
+IconPicker.Render = (props) => {
 	const { tag = 'span', name, alwaysRender = false, ...restProps } = props;
 
 	const Tag = tag;

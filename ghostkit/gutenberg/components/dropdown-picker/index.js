@@ -1,6 +1,5 @@
-import classnames from 'classnames/dedupe';
-
 import { BaseControl, Button, Dropdown } from '@wordpress/components';
+import classnames from 'classnames/dedupe';
 
 /**
  * Component
@@ -19,10 +18,7 @@ export default function DropdownPicker(props) {
 	} = props;
 
 	return (
-		<BaseControl
-			className="ghostkit-component-dropdown-picker-wrapper"
-			__nextHasNoMarginBottom
-		>
+		<BaseControl className="ghostkit-component-dropdown-picker-wrapper">
 			<Dropdown
 				className={classnames(
 					'ghostkit-component-dropdown-picker__dropdown',

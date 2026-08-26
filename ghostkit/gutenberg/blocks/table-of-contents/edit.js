@@ -1,5 +1,3 @@
-import classnames from 'classnames/dedupe';
-
 import {
 	InspectorControls,
 	RichText,
@@ -13,9 +11,10 @@ import {
 	Spinner,
 } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { RawHTML, useRef } from '@wordpress/element';
+import { RawHTML, useMemo, useRef } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import getIcon from '../../utils/get-icon';
 import getAllHeadings from './get-all-headings';
@@ -34,21 +33,27 @@ export default function BlockEdit(props) {
 
 	const { title, allowedHeaders, listStyle } = attributes;
 
-	const { headings, tocHTML } = useSelect((select) => {
-		const { getBlocks } = select('core/block-editor');
+	// `getAllHeadings` builds a new array on every call, so deriving it inside the
+	// selector would hand `useSelect` a fresh identity each run and force a re-render.
+	const blocks = useSelect(
+		(select) => select('core/block-editor').getBlocks(),
+		[]
+	);
 
-		const blocks = getBlocks();
-		const foundHeadings = getAllHeadings(blocks, allowedHeaders);
+	const headings = useMemo(
+		() => getAllHeadings(blocks, allowedHeaders),
+		[blocks, allowedHeaders]
+	);
 
-		return {
-			headings: foundHeadings,
-			tocHTML: select('ghostkit/blocks/table-of-contents').getTOC({
-				headings: foundHeadings,
+	const tocHTML = useSelect(
+		(select) =>
+			select('ghostkit/blocks/table-of-contents').getTOC({
+				headings,
 				allowedHeaders,
 				listStyle,
 			}),
-		};
-	});
+		[headings, allowedHeaders, listStyle]
+	);
 
 	className = classnames('ghostkit-toc', className);
 	className = applyFilters('ghostkit.editor.className', className, props);
@@ -106,8 +111,6 @@ export default function BlockEdit(props) {
 							});
 						}}
 						multiple
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 					<SelectControl
 						label={__('List Style', 'ghostkit')}
@@ -131,8 +134,6 @@ export default function BlockEdit(props) {
 							},
 						]}
 						onChange={(val) => setAttributes({ listStyle: val })}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
 			</InspectorControls>

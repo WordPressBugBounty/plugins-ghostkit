@@ -1,16 +1,15 @@
-import classnames from 'classnames/dedupe';
-
 import {
-	__experimentalToggleGroupControl as ExperimentalToggleGroupControl,
-	__experimentalToggleGroupControlOption as ExperimentalToggleGroupControlOption,
-	__experimentalToggleGroupControlOptionIcon as ExperimentalToggleGroupControlOptionIcon,
 	BaseControl,
 	Button,
 	ButtonGroup,
+	__experimentalToggleGroupControl as ExperimentalToggleGroupControl,
+	__experimentalToggleGroupControlOption as ExperimentalToggleGroupControlOption,
+	__experimentalToggleGroupControlOptionIcon as ExperimentalToggleGroupControlOptionIcon,
 	ToggleGroupControl as StableToggleGroupControl,
 	ToggleGroupControlOption as StableToggleGroupControlOption,
 	ToggleGroupControlOptionIcon as StableToggleGroupControlOptionIcon,
 } from '@wordpress/components';
+import classnames from 'classnames/dedupe';
 
 const ToggleGroupControl =
 	StableToggleGroupControl || ExperimentalToggleGroupControl;
@@ -46,7 +45,6 @@ export default function ToggleGroup(props) {
 					'ghostkit-control-toggle-group',
 					props.className
 				)}
-				__nextHasNoMarginBottom
 			>
 				<ToggleGroupControl
 					value={value}
@@ -55,8 +53,6 @@ export default function ToggleGroup(props) {
 					isAdaptiveWidth={isAdaptiveWidth}
 					isDeselectable={isDeselectable}
 					hideLabelFromVision
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
 				>
 					{options.map((option) =>
 						option.icon ? (
@@ -83,7 +79,7 @@ export default function ToggleGroup(props) {
 
 	// Fallback.
 	return (
-		<BaseControl id={label} label={label} __nextHasNoMarginBottom>
+		<BaseControl id={label} label={label}>
 			<ButtonGroup className="ghostkit-control-toggle-group">
 				{options.map((option) => (
 					<Button

@@ -1,9 +1,8 @@
-import { debounce } from 'throttle-debounce';
-
 import apiFetch from '@wordpress/api-fetch';
 import { ExternalLink, PanelBody, TextControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { debounce } from 'throttle-debounce';
 
 const { GHOSTKIT } = window;
 
@@ -45,8 +44,6 @@ export default function BlockSettings() {
 					setApiSiteKey(value);
 					saveAPIKeys(value, apiSecretKey);
 				}}
-				__next40pxDefaultSize
-				__nextHasNoMarginBottom
 			/>
 			<TextControl
 				label={__('Secret Key', 'ghostkit')}
@@ -55,8 +52,6 @@ export default function BlockSettings() {
 					setApiSecretKey(value);
 					saveAPIKeys(apiSiteKey, value);
 				}}
-				__next40pxDefaultSize
-				__nextHasNoMarginBottom
 			/>
 			<p>
 				{__(

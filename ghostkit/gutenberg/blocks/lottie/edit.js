@@ -1,17 +1,16 @@
-import classnames from 'classnames/dedupe';
-
 import {
-	__experimentalUnitControl as ExperimentalUnitControl,
 	Button,
+	__experimentalUnitControl as ExperimentalUnitControl,
 	PanelBody,
 	SelectControl,
+	UnitControl as StableUnitControl,
 	TextControl,
 	ToggleControl,
-	UnitControl as StableUnitControl,
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import RangeControl from '../../components/range-control';
 import PreviewLottie from './preview-lottie';
@@ -98,8 +97,6 @@ export default function BlockEdit(props) {
 							onChange={(value) =>
 								setAttributes({ trigger: value })
 							}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						{trigger !== 'scroll' ? (
 							<>
@@ -112,8 +109,6 @@ export default function BlockEdit(props) {
 									step={0.1}
 									min={0}
 									max={10}
-									__next40pxDefaultSize
-									__nextHasNoMarginBottom
 								/>
 								<ToggleControl
 									label={__('Loop', 'ghostkit')}
@@ -121,7 +116,6 @@ export default function BlockEdit(props) {
 									onChange={() =>
 										setAttributes({ loop: !loop })
 									}
-									__nextHasNoMarginBottom
 								/>
 							</>
 						) : null}
@@ -133,7 +127,6 @@ export default function BlockEdit(props) {
 									direction: direction === 1 ? -1 : 1,
 								});
 							}}
-							__nextHasNoMarginBottom
 						/>
 						<UnitControl
 							label={__('Width', 'ghostkit')}
@@ -150,8 +143,6 @@ export default function BlockEdit(props) {
 							min={0}
 							max={isWidthPercent ? 100 : Infinity}
 							__unstableInputWidth="70px"
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 					</PanelBody>
 					<PanelBody>
@@ -159,8 +150,6 @@ export default function BlockEdit(props) {
 							label={__('Lottie File', 'ghostkit')}
 							value={fileUrl}
 							disabled
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<Button
 							variant="secondary"

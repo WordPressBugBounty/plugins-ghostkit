@@ -1,5 +1,3 @@
-import classnames from 'classnames/dedupe';
-
 import apiFetch from '@wordpress/api-fetch';
 import { parse } from '@wordpress/blocks';
 import {
@@ -17,6 +15,7 @@ import { PluginMoreMenuItem } from '@wordpress/editor';
 import { Component, Fragment, RawHTML, useState } from '@wordpress/element';
 import { addFilter, applyFilters } from '@wordpress/hooks';
 import { __, sprintf } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import Modal from '../../components/modal';
 import getIcon from '../../utils/get-icon';
@@ -123,8 +122,6 @@ class TemplatesModal extends Component {
 							},
 						}));
 					}}
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
 				/>
 			);
 		}
@@ -368,6 +365,7 @@ class TemplatesModal extends Component {
 												<div className="ghostkit-plugin-templates-count">
 													<RawHTML>
 														{sprintf(
+															// translators: %s: number of templates in the current category, wrapped in a <strong> tag.
 															__(
 																'Templates: %s',
 																'ghostkit'
@@ -568,6 +566,7 @@ function checkMissingBlocks(data) {
 				>
 					<RawHTML>
 						{sprintf(
+							// translators: %s: name of the missing block, for example "nk/awb", wrapped in a <strong> tag.
 							__('%s block is missing.', 'ghostkit'),
 							`<strong>${blockName}</strong>`
 						)}

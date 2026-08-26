@@ -1,5 +1,3 @@
-import classnames from 'classnames/dedupe';
-
 import {
 	InspectorControls,
 	RichText,
@@ -8,6 +6,7 @@ import {
 import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
 import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import {
 	FieldDefaultSettings,
@@ -68,7 +67,6 @@ export default function BlockEdit(props) {
 								});
 							}
 						}}
-						__nextHasNoMarginBottom
 					/>
 					{emailConfirmation ? (
 						<>
@@ -80,8 +78,6 @@ export default function BlockEdit(props) {
 										placeholderConfirmation: val,
 									})
 								}
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
 							/>
 							<TextControl
 								label={__('Default', 'ghostkit')}
@@ -89,8 +85,6 @@ export default function BlockEdit(props) {
 								onChange={(val) =>
 									setAttributes({ defaultConfirmation: val })
 								}
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
 							/>
 						</>
 					) : null}
@@ -104,8 +98,6 @@ export default function BlockEdit(props) {
 						<div className="ghostkit-form-field-email-primary">
 							<TextControl
 								type="email"
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
 								{...getFieldAttributes(attributes)}
 							/>
 							<FieldDescription {...props} />
@@ -113,8 +105,6 @@ export default function BlockEdit(props) {
 						<div className="ghostkit-form-field-email-confirm">
 							<TextControl
 								type="email"
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
 								{...getFieldAttributes({
 									slug: attributes.slug
 										? `${attributes.slug}-confirmation`
@@ -146,8 +136,6 @@ export default function BlockEdit(props) {
 					<>
 						<TextControl
 							type="email"
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 							{...getFieldAttributes(attributes)}
 						/>
 						<FieldDescription {...props} />

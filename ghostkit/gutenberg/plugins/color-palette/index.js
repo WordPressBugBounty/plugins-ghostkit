@@ -141,16 +141,15 @@ class ColorPaletteModal extends Component {
 												updateColorPalette(newColors);
 											}}
 											style={{ marginTop: 0 }}
-											__next40pxDefaultSize
-											__nextHasNoMarginBottom
 										/>
-										<BaseControl __nextHasNoMarginBottom>
+										<BaseControl>
 											<Button
 												onClick={() => {
 													if (
 														// eslint-disable-next-line no-alert
 														window.confirm(
 															sprintf(
+																// translators: %1$s: color value, for example "#0366d6", %2$s: color name.
 																__(
 																	'Remove color "%1$s" with name "%2$s"?',
 																	'ghostkit'

@@ -1,5 +1,3 @@
-import classnames from 'classnames/dedupe';
-
 import {
 	AlignmentToolbar,
 	BlockControls,
@@ -20,6 +18,7 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import { useEffect } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
 
 import GapSettings from '../../components/gap-settings';
 import getIcon from '../../utils/get-icon';
@@ -133,7 +132,6 @@ export default function BlockEdit(props) {
 					<BaseControl
 						id={__('Vertical align', 'ghostkit')}
 						label={__('Vertical align', 'ghostkit')}
-						__nextHasNoMarginBottom
 					>
 						<div>
 							<Toolbar label={__('Vertical align', 'ghostkit')}>
@@ -175,7 +173,6 @@ export default function BlockEdit(props) {
 					<BaseControl
 						id={__('Horizontal align', 'ghostkit')}
 						label={__('Horizontal align', 'ghostkit')}
-						__nextHasNoMarginBottom
 					>
 						<div>
 							<AlignmentToolbar

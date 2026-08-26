@@ -2,7 +2,7 @@
 /**
  * Plugin Name:  Ghost Kit
  * Description:  Page Builder Blocks and Extensions for Gutenberg
- * Version:      3.6.1
+ * Version:      3.7.0
  * Plugin URI:   https://www.ghostkit.io/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=byline
  * Author:       Ghost Kit Team
  * Author URI:   https://www.ghostkit.io/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=byline
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'GHOSTKIT_VERSION' ) ) {
-	define( 'GHOSTKIT_VERSION', '3.6.1' );
+	define( 'GHOSTKIT_VERSION', '3.7.0' );
 }
 
 if ( ! class_exists( 'GhostKit' ) ) :
@@ -278,6 +278,21 @@ if ( ! class_exists( 'GhostKit' ) ) :
 			);
 			wp_style_add_data( 'ghostkit-editor', 'rtl', 'replace' );
 			wp_style_add_data( 'ghostkit-editor', 'suffix', '.min' );
+
+			// Since WordPress 7.1 the post editor canvas is always iframed, and core collects
+			// the iframe assets by running `enqueue_block_assets` a second time with
+			// `should_load_block_editor_scripts_and_styles` forced to false.
+			// The editor bundles belong to the editor chrome only - loading them in the canvas
+			// would boot a second copy of the block editor inside the iframe. The vendor
+			// libraries, on the other hand, are needed inside the canvas to render block previews
+			// (for example the `lottie-player` custom element, which is registered per window).
+			if ( ! wp_should_load_block_editor_scripts_and_styles() ) {
+				foreach ( $js_deps as $dep ) {
+					wp_enqueue_script( $dep );
+				}
+
+				return;
+			}
 
 			GhostKit_Assets::enqueue_script(
 				'ghostkit-editor',

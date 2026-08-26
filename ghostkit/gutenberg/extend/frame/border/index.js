@@ -1,7 +1,7 @@
 import {
+	BaseControl,
 	__experimentalToolsPanelItem as ExperimentalToolsPanelItem,
 	__stableToolsPanelItem as StableToolsPanelItem,
-	BaseControl,
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { addFilter } from '@wordpress/hooks';
@@ -157,11 +157,7 @@ function FrameBorderTools(props) {
 			}}
 			isShownByDefault={false}
 		>
-			<BaseControl
-				id={baseControlLabel}
-				label={baseControlLabel}
-				__nextHasNoMarginBottom
-			>
+			<BaseControl id={baseControlLabel} label={baseControlLabel}>
 				<div className="ghostkit-control-border-row">
 					<ColorPicker
 						value={maybeDecode(

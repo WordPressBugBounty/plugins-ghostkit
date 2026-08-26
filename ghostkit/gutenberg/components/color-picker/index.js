@@ -1,6 +1,5 @@
-import classnames from 'classnames/dedupe';
-
 import { BaseControl, Button, Dropdown } from '@wordpress/components';
+import classnames from 'classnames/dedupe';
 
 import ColorPalette from '../color-palette';
 
@@ -21,10 +20,7 @@ export default function ColorPicker(props) {
 	} = props;
 
 	return (
-		<BaseControl
-			className="ghostkit-component-color-picker-wrapper"
-			__nextHasNoMarginBottom
-		>
+		<BaseControl className="ghostkit-component-color-picker-wrapper">
 			<Dropdown
 				className="ghostkit-component-color-picker__dropdown"
 				contentClassName="ghostkit-component-color-picker__dropdown-content"

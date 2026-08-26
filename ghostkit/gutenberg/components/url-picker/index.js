@@ -1,6 +1,6 @@
 import {
-	__experimentalLinkControl as ExperimentalLinkControl,
 	BlockControls,
+	__experimentalLinkControl as ExperimentalLinkControl,
 	InspectorControls,
 	LinkControl as StableLinkControl,
 } from '@wordpress/block-editor';
@@ -173,8 +173,6 @@ export default function URLPicker(props) {
 									rel: val,
 								});
 							}}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 						<TextControl
 							label={__('Accessible Label')}
@@ -184,8 +182,6 @@ export default function URLPicker(props) {
 									ariaLabel: val,
 								});
 							}}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
 						/>
 					</PanelBody>
 				</InspectorControls>

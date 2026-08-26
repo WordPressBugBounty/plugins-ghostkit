@@ -1,7 +1,7 @@
 import {
 	__experimentalToolsPanelItem as ExperimentalToolsPanelItem,
-	__stableToolsPanelItem as StableToolsPanelItem,
 	RangeControl,
+	__stableToolsPanelItem as StableToolsPanelItem,
 } from '@wordpress/components';
 import { addFilter } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
@@ -62,8 +62,6 @@ function CustomCSSOpacityTools(props) {
 				max={1}
 				step={0.01}
 				style={{ flex: 1 }}
-				__next40pxDefaultSize
-				__nextHasNoMarginBottom
 			/>
 		</ToolsPanelItem>
 	);

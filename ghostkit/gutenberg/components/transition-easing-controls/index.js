@@ -1,14 +1,14 @@
 // TODO: check for better implementation - https://codepen.io/osublake/pen/OyPGEo
-import BezierEditor from 'bezier-easing-editor';
-import classnames from 'classnames/dedupe';
 
 import {
+	BaseControl,
 	__experimentalNumberControl as ExperimentalNumberControl,
 	__stableNumberControl as StableNumberControl,
-	BaseControl,
 } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import BezierEditor from 'bezier-easing-editor';
+import classnames from 'classnames/dedupe';
 
 import round from '../../utils/round';
 import Select from '../select';
@@ -18,8 +18,7 @@ import PRESETS from './presets';
 
 const NumberControl = StableNumberControl || ExperimentalNumberControl;
 
-export { DEFAULT };
-export { PRESETS };
+export { DEFAULT, PRESETS };
 
 export function EasingBezierEditor(props) {
 	const { value, onChange, variant = '', backgroundColor } = props;
@@ -202,10 +201,8 @@ export function EasingControls(props) {
 				id={__('Bezier', 'ghostkit')}
 				label={__('Bezier', 'ghostkit')}
 				className="ghostkit-component-easing-controls-bezier"
-				__nextHasNoMarginBottom
 			>
 				<NumberControl
-					__next40pxDefaultSize
 					value={easing[0]}
 					onChange={(val) =>
 						updateValue({
@@ -223,7 +220,6 @@ export function EasingControls(props) {
 					step={0.01}
 				/>
 				<NumberControl
-					__next40pxDefaultSize
 					value={easing[1]}
 					onChange={(val) =>
 						updateValue({
@@ -241,7 +237,6 @@ export function EasingControls(props) {
 					step={0.01}
 				/>
 				<NumberControl
-					__next40pxDefaultSize
 					value={easing[2]}
 					onChange={(val) =>
 						updateValue({
@@ -259,7 +254,6 @@ export function EasingControls(props) {
 					step={0.01}
 				/>
 				<NumberControl
-					__next40pxDefaultSize
 					value={easing[3]}
 					onChange={(val) =>
 						updateValue({
@@ -278,7 +272,6 @@ export function EasingControls(props) {
 				/>
 			</BaseControl>
 			<NumberControl
-				__next40pxDefaultSize
 				label={__('Duration', 'ghostkit')}
 				suffix="s&nbsp;"
 				value={value?.duration || 0}
@@ -291,7 +284,6 @@ export function EasingControls(props) {
 			/>
 			{enableDelayControl && (
 				<NumberControl
-					__next40pxDefaultSize
 					label={__('Delay', 'ghostkit')}
 					suffix="s&nbsp;"
 					value={value?.delay || 0}

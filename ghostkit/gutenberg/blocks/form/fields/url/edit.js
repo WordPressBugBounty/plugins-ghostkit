@@ -1,8 +1,7 @@
-import classnames from 'classnames/dedupe';
-
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { PanelBody, TextControl } from '@wordpress/components';
 import { applyFilters } from '@wordpress/hooks';
+import classnames from 'classnames/dedupe';
 
 import {
 	FieldDefaultSettings,
@@ -38,12 +37,7 @@ export default function BlockEdit(props) {
 			</InspectorControls>
 			<div {...blockProps}>
 				<FieldLabel {...props} />
-				<TextControl
-					type="url"
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-					{...getFieldAttributes(attributes)}
-				/>
+				<TextControl type="url" {...getFieldAttributes(attributes)} />
 				<FieldDescription {...props} />
 			</div>
 		</>

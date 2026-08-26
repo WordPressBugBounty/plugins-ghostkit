@@ -33,6 +33,21 @@ import {
 
 const DEFAULT_SIZE_SLUG = 'full';
 
+/**
+ * The no-cookie host only exists for YouTube, so the toggle is offered only once the URL is one.
+ * VideoWorker owns the URL parsing; without it loaded we simply do not offer the toggle.
+ *
+ * @param {string} url - video URL.
+ * @return {boolean}
+ */
+function isYoutubeUrl(url) {
+	if (!url || typeof window.VideoWorker === 'undefined') {
+		return false;
+	}
+
+	return !!window.VideoWorker.providers.Youtube.parseURL(url);
+}
+
 export default function BlockInspectorControls(props) {
 	const { attributes, setAttributes, isSelected } = props;
 
@@ -44,6 +59,7 @@ export default function BlockInspectorControls(props) {
 		videoWebm,
 		videoAspectRatio,
 		videoVolume,
+		videoYoutubeNoCookie,
 		videoAutoplay,
 		videoAutopause,
 		videoLoop,
@@ -178,8 +194,20 @@ export default function BlockInspectorControls(props) {
 						type="url"
 						value={video}
 						onChange={(value) => setAttributes({ video: value })}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
+					/>
+				)}
+
+				{type === 'yt_vm_video' && isYoutubeUrl(video) && (
+					<ToggleControl
+						label={__('Privacy-Enhanced Mode', 'ghostkit')}
+						help={__(
+							'Load the video from youtube-nocookie.com. YouTube stores no cookies until playback starts, but some visitors are asked to sign in before the video plays.',
+							'ghostkit'
+						)}
+						checked={!!videoYoutubeNoCookie}
+						onChange={(value) =>
+							setAttributes({ videoYoutubeNoCookie: value })
+						}
 					/>
 				)}
 
@@ -188,7 +216,6 @@ export default function BlockInspectorControls(props) {
 					<BaseControl
 						id={__('Select Video', 'ghostkit')}
 						label={__('Select Video', 'ghostkit')}
-						__nextHasNoMarginBottom
 					>
 						<div style={{ display: 'flex', gap: '10px' }}>
 							{!videoMp4 && (
@@ -260,9 +287,8 @@ export default function BlockInspectorControls(props) {
 					<BaseControl
 						id={__('Preview', 'ghostkit')}
 						label={__('Preview', 'ghostkit')}
-						__nextHasNoMarginBottom
 					>
-						{/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+						{/* biome-ignore lint/a11y/useMediaCaption: editor-only preview of the selected video, captions are not available here. */}
 						<video
 							controls
 							style={{
@@ -322,8 +348,6 @@ export default function BlockInspectorControls(props) {
 					min={0}
 					max={100}
 					onChange={(val) => setAttributes({ videoVolume: val })}
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
 				/>
 
 				{/* Icon settings. */}
@@ -343,7 +367,6 @@ export default function BlockInspectorControls(props) {
 					<BaseControl
 						id={__('Icon Align', 'ghostkit')}
 						label={__('Icon Align', 'ghostkit')}
-						__nextHasNoMarginBottom
 					>
 						<div>
 							<BlockAlignmentToolbar
@@ -438,7 +461,6 @@ export default function BlockInspectorControls(props) {
 							onChange={(value) =>
 								setAttributes({ videoAutoplay: value })
 							}
-							__nextHasNoMarginBottom
 						/>
 						<ToggleControl
 							label={__('Autopause', 'ghostkit')}
@@ -450,7 +472,6 @@ export default function BlockInspectorControls(props) {
 							onChange={(value) =>
 								setAttributes({ videoAutopause: value })
 							}
-							__nextHasNoMarginBottom
 						/>
 						<ToggleControl
 							label={__('Loop', 'ghostkit')}
@@ -458,7 +479,6 @@ export default function BlockInspectorControls(props) {
 							onChange={(value) =>
 								setAttributes({ videoLoop: value })
 							}
-							__nextHasNoMarginBottom
 						/>
 					</>
 				)}
@@ -495,7 +515,6 @@ export default function BlockInspectorControls(props) {
 											'Click the image to edit or update',
 											'ghostkit'
 										)}
-										__nextHasNoMarginBottom
 									>
 										{/* eslint-disable-next-line jsx-a11y/control-has-associated-label, jsx-a11y/anchor-is-valid */}
 										<a
@@ -534,7 +553,6 @@ export default function BlockInspectorControls(props) {
 										)}
 									</>
 								}
-								__nextHasNoMarginBottom
 							/>
 							{editorSettings?.imageSizes ? (
 								<SelectControl
@@ -553,8 +571,6 @@ export default function BlockInspectorControls(props) {
 											label: imgSize.name,
 										})
 									)}
-									__next40pxDefaultSize
-									__nextHasNoMarginBottom
 								/>
 							) : null}
 							<div style={{ marginTop: '-10px' }} />

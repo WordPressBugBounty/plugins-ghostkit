@@ -1,13 +1,12 @@
-import classnames from 'classnames/dedupe';
-import { merge } from 'lodash';
-import { debounce } from 'throttle-debounce';
-
 import apiFetch from '@wordpress/api-fetch';
 import { registerCoreBlocks } from '@wordpress/block-library';
 import { getBlockTypes, getCategories } from '@wordpress/blocks';
 import { Dashicon, ToggleControl, Tooltip } from '@wordpress/components';
 import { Component, createElement, renderToString } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
+import classnames from 'classnames/dedupe';
+import { merge } from 'lodash';
+import { debounce } from 'throttle-debounce';
 
 import Info from '../components/info';
 
@@ -229,7 +228,6 @@ export default class Blocks extends Component {
 								onChange={() => {
 									this.setDisabledBlock(block);
 								}}
-								__nextHasNoMarginBottom
 							/>
 						</div>
 					</Tooltip>
@@ -267,6 +265,7 @@ export default class Blocks extends Component {
 				categoryButton = (
 					<Tooltip
 						text={sprintf(
+							// translators: %s: number of disabled blocks in this category.
 							__('Disabled Blocks: %s', 'ghostkit'),
 							disabledCurrentCount
 						)}
@@ -299,7 +298,11 @@ export default class Blocks extends Component {
 					{count ? (
 						<div className="ghostkit-settings-blocks-items-head">
 							<span className="ghostkit-settings-blocks-items-head-count">
-								{sprintf(__('Blocks: %s', 'ghostkit'), count)}
+								{sprintf(
+									// translators: %s: number of blocks in the selected category.
+									__('Blocks: %s', 'ghostkit'),
+									count
+								)}
 							</span>
 							<Tooltip
 								text={
@@ -324,7 +327,6 @@ export default class Blocks extends Component {
 												!(disabledCount !== count)
 											);
 										}}
-										__nextHasNoMarginBottom
 									/>
 								</div>
 							</Tooltip>

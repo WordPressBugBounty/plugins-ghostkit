@@ -1,17 +1,16 @@
-import { addCompleter } from 'ace-builds/src-noconflict/ext-language_tools';
-import classnames from 'classnames/dedupe';
-
 import { getBlockSupport, hasBlockSupport } from '@wordpress/blocks';
 import {
-	__experimentalToolsPanelItem as ExperimentalToolsPanelItem,
-	__stableToolsPanelItem as StableToolsPanelItem,
 	BaseControl,
 	Button,
 	Dropdown,
+	__experimentalToolsPanelItem as ExperimentalToolsPanelItem,
+	__stableToolsPanelItem as StableToolsPanelItem,
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { addFilter } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
+import { addCompleter } from 'ace-builds/src-noconflict/ext-language_tools';
+import classnames from 'classnames/dedupe';
 
 import CodeEditor from '../../../components/code-editor';
 import ResponsiveToggle from '../../../components/responsive-toggle';
@@ -78,11 +77,7 @@ function CustomCSSCustomTools(props) {
 			}}
 			isShownByDefault={false}
 		>
-			<BaseControl
-				id={baseControlLabel}
-				label={baseControlLabel}
-				__nextHasNoMarginBottom
-			>
+			<BaseControl id={baseControlLabel} label={baseControlLabel}>
 				<Dropdown
 					className="ghostkit-extension-customCSS-custom__dropdown"
 					contentClassName="ghostkit-extension-customCSS-custom__dropdown-content"
@@ -130,7 +125,6 @@ function CustomCSSCustomTools(props) {
 							<BaseControl
 								id={baseControlLabel}
 								label={baseControlLabel}
-								__nextHasNoMarginBottom
 							/>
 							<CodeEditor
 								mode="css"
@@ -163,6 +157,7 @@ function CustomCSSCustomTools(props) {
 										'ghostkit'
 									)}
 									dangerouslySetInnerHTML={{
+										// translators: %s: the literal "selector" keyword, wrapped in a <code> tag. Keep it untranslated.
 										__html: __(
 											'Use %s rule to change block styles.',
 											'ghostkit'

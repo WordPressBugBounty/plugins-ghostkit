@@ -1,8 +1,8 @@
 import {
 	BaseControl,
 	Button,
-	DateTimePicker as WPDateTimePicker,
 	Popover,
+	DateTimePicker as WPDateTimePicker,
 } from '@wordpress/components';
 import { dateI18n, getSettings } from '@wordpress/date';
 import { useState } from '@wordpress/element';
@@ -28,7 +28,6 @@ export default function DateTimePicker(props) {
 			id={label}
 			label={label}
 			className="ghostkit-components-date-time-picker"
-			__nextHasNoMarginBottom
 		>
 			<div>
 				<Button isLink onClick={() => setIsPickerOpen(!isPickerOpen)}>
