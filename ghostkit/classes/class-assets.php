@@ -374,7 +374,7 @@ class GhostKit_Assets {
 
 		// Motion.
 		if ( apply_filters( 'gkt_enqueue_plugin_motion', true ) ) {
-			self::register_script( 'motion', 'assets/vendor/motion/dist/motion.min', array(), '11.15.0' );
+			self::register_script( 'motion', 'assets/vendor/motion/dist/motion.min', array(), '14.5.0' );
 
 			$js_deps[] = 'motion';
 		}
@@ -492,7 +492,7 @@ class GhostKit_Assets {
 			'googleReCaptchaAPISiteKey'   => $recaptcha_site_key,
 			'googleReCaptchaAPISecretKey' => is_admin() ? $recaptcha_secret_key : '',
 			'sidebars'                    => $sidebars,
-			'icons'                       => is_admin() ? apply_filters( 'gkt_icons_list', array() ) : array(),
+			'icons'                       => is_admin() ? GhostKit_Icons_List::get_packs() : array(),
 			'shapes'                      => is_admin() ? apply_filters( 'gkt_shapes_list', array() ) : array(),
 			'fonts'                       => is_admin() ? apply_filters( 'gkt_fonts_list', array() ) : array(),
 			'customTypographyList'        => is_admin() ? apply_filters( 'gkt_custom_typography', array() ) : array(),
@@ -799,8 +799,7 @@ class GhostKit_Assets {
 	 */
 	public static function add_custom_css( $name, $css ) {
 		if ( ! wp_style_is( $name, 'enqueued' ) ) {
-			$css = wp_kses( $css, array( '\'', '\"' ) );
-			$css = str_replace( '&gt;', '>', $css );
+			$css = self::sanitize_custom_css( $css );
 
 			$allow_js_fallback = apply_filters( 'gkt_custom_css_allow_js_fallback', self::$already_added_custom_assets, $name, $css );
 
@@ -827,6 +826,33 @@ class GhostKit_Assets {
 		}
 
 		self::$stored_assets[] = $name;
+	}
+
+	/**
+	 * Sanitize custom CSS for output inside a <style> tag.
+	 * Unlike wp_kses() it keeps `&`, `>` and `<` intact.
+	 *
+	 * @param string $css - code.
+	 *
+	 * @return string
+	 */
+	public static function sanitize_custom_css( $css ) {
+		// Drop HTML tags such as a <style> wrapper but keep their text, so CSS pasted with tags still applies.
+		$stripped = preg_replace( '#</?[a-zA-Z](?:[^<>"\']|"[^"]*"|\'[^\']*\')*>#', '', (string) $css );
+		if ( null !== $stripped ) {
+			$css = $stripped;
+		}
+
+		// No end tag or comment can open: `</` becomes the CSS escape `\3c /`, `<!--` a space, and ESC bytes
+		// (ISO-2022-JP shift sequences that hide `</style` from byte matching) are dropped.
+		$css = (string) preg_replace(
+			array( '#<!--#', '#<(?=/)#' ),
+			array( ' ', '\\\\3c ' ),
+			str_replace( "\x1b", '', (string) $css )
+		);
+
+		// GhostKit_Extension_Styles::parse() escapes `>` in block style selectors at render time.
+		return str_replace( '&gt;', '>', $css );
 	}
 
 	/**
